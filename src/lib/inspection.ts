@@ -12,7 +12,7 @@ export type InspectionRequest = z.infer<typeof inspectionRequestSchema>;
 
 export function buildInspectionMessage(request: InspectionRequest) {
   return [
-    "Hello Hamak Event Centre, I'd like to arrange an inspection.",
+    "Hello Omega Events Arena, I'd like to arrange an inspection.",
     "",
     `Name: ${request.fullName}`,
     `Phone: ${request.phone}`,

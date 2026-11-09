@@ -6,7 +6,7 @@ describe("inspection request validation and WhatsApp message", () => {
   it("accepts complete details with a formatted local phone number", () => {
     expect(inspectionRequestSchema.safeParse({
       fullName: "Amara Okafor",
-      phone: "+234 806 866 0602",
+      phone: "+234 803 314 5553",
       eventType: "Wedding",
       guests: "120",
       preferredDate: "2027-06-12",
@@ -26,7 +26,7 @@ describe("inspection request validation and WhatsApp message", () => {
   it("rejects guest counts outside the supported 1–10,000 range", () => {
     expect(inspectionRequestSchema.safeParse({
       fullName: "Amara Okafor",
-      phone: "08068660602",
+      phone: "08033145553",
       eventType: "Wedding",
       guests: "0",
       preferredDate: "2027-06-12",
@@ -34,12 +34,15 @@ describe("inspection request validation and WhatsApp message", () => {
   });
 
   it("builds an encoded-message-ready booking request with all submitted details", () => {
-    expect(buildInspectionMessage({
+    const message = buildInspectionMessage({
       fullName: "Amara Okafor",
-      phone: "+234 806 866 0602",
+      phone: "+234 803 314 5553",
       eventType: "Wedding",
       guests: 120,
       preferredDate: "2027-06-12",
-    })).toContain("Name: Amara Okafor\nPhone: +234 806 866 0602\nEvent: Wedding\nEstimated guests: 120\nPreferred date: 2027-06-12");
+    });
+
+    expect(message).toContain("Hello Omega Events Arena, I'd like to arrange an inspection.");
+    expect(message).toContain("Name: Amara Okafor\nPhone: +234 803 314 5553\nEvent: Wedding\nEstimated guests: 120\nPreferred date: 2027-06-12");
   });
 });
