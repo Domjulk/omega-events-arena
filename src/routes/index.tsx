@@ -225,6 +225,7 @@ function Index() {
           <div className="hero-actions">
             <Button className="button-dark" onClick={openInspection}>Arrange an inspection <ArrowRight size={17} /></Button>
             <Button asChild variant="outline" className="button-outline"><a href="#specs">Explore the venue <ArrowDown size={15} /></a></Button>
+            <Button asChild variant="outline" className="button-outline"><a href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Chat with Omega Events Arena on WhatsApp">Chat on WhatsApp <ArrowUpRight size={15} /></a></Button>
           </div>
           <div className="hero-footnote"><MapPin size={15} /> Maitama, Abuja · FCT</div>
         </div>
